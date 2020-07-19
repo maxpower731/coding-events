@@ -3,7 +3,9 @@ package org.launchcode.codingevents.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,21 +14,23 @@ import java.util.List;
 @RequestMapping("events")
 public class EventController {
 
+    private static List<String> events = new ArrayList<>();
+
     @GetMapping()
     public String handler (Model model) {
-        List events = new ArrayList<>();
-        events.add("Conference1");
-        events.add("Conference2");
-        events.add("Conference3");
-        events.add("Conference4");
-
         model.addAttribute("events", events);
         return "events/index";
     }
 
     //lives at /events/create
     @GetMapping("create")
-    public String renderCreateEventForm() {
+    public String renderCreateEventForm(Model model) {
         return "events/create";
+    }
+
+    @PostMapping("create")
+    public String createEvent(@RequestParam String eventName) {
+        events.add(eventName);
+        return "redirect:/events"; // instructors browser to go to a different page
     }
 }
