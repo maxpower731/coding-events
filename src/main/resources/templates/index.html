@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Home</title>
-</head>
+<head th:replace="fragments :: head"></head>
+
 <body>
-    <a href="/events">Events</a>
+<nav th:replace="fragments :: nav"></nav>
+<h2>A site to track events!</h2>
+<p>Click on the links above to create and view events.</p>
+
 </body>
 </html>
