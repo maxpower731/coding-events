@@ -6,15 +6,19 @@
 <nav th:replace="fragments :: navigation"></nav>
 <p th:unless="${events} and ${events.size()}">No events!</p>
 
-<table class="table table-striped">
-    <thead>
+<table class="table table-bordered table-hover table-striped">
+    <thead class="thead-dark">
         <tr>
             <th>Name</th>
+            <th>Name again..</th>
         </tr>
     </thead>
+    <tbody>
     <tr th:each="event : ${events}">
         <td th:text="${event}"></td>
+        <td th:text="${event}"></td>
     </tr>
+    </tbody>
 </table>
 
 </body>
